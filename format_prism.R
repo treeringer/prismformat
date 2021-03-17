@@ -35,8 +35,9 @@ write.csv(date.monthly,file = "tmean_wolf_12.csv") #right to a file for later
 #######################
 #try with data that already behave
 setwd("C:/Users/rmaxwell2/Desktop/work_r")
+#install.packages(tidyverse)
+library(tidyverse)
 tmean <- read.table(file = "wolf_tmean_long.csv", header = TRUE, sep = ",")
-
 date <- tmean[1:1500,3] #change to your number of rows
 date.mat <- matrix(date, nrow =12) #create matrix
 tdate <- t(date.mat) #transpose
