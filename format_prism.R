@@ -4,6 +4,8 @@
 #you will need to download a text file of climate data from https://prism.oregonstate.edu/explorer/
 #delete the meta data in the top 10 rows in EXCEL so you have just data with headers
 setwd("C:/Users/rmaxwell2/Desktop/work_r")
+#install.packages(tidyverse)
+library(tidyverse)
 tmean <- read.table(file = "wolf_tmean_prism_long.csv", header = TRUE, sep = ",")
 head(tmean)
 year <- substr(tmean[,1], 1, 4) #pull year from date string using character positions
