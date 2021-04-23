@@ -1,12 +1,11 @@
 #code to format stacked or long format monthly climate data to 12 column format
 
 #try with PRISM stacked or long format downloaded from PRISM data viewer for a single point
-#you will need to download a text file of climate data from https://prism.oregonstate.edu/explorer/
-#delete the meta data in the top 10 rows in EXCEL so you have just data with headers
+#you will need to download a csv file of climate data from https://prism.oregonstate.edu/explorer/
 setwd("C:/Users/rmaxwell2/Desktop/work_r")
 #install.packages(tidyverse)
 library(tidyverse)
-tmean <- read.table(file = "wolf_tmean_prism_long.csv", header = TRUE, sep = ",")
+tmean <- read.table(file = "wolf_tmean_prism_original.csv", skip = 10, header = TRUE, sep = ",") #skips reading the header
 head(tmean)
 year <- substr(tmean[,1], 1, 4) #pull year from date string using character positions
 month <- substr(tmean[,1], 6, 7) #pull month from date string using character positions
