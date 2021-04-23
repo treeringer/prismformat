@@ -2,7 +2,7 @@
 
 #try with PRISM stacked or long format downloaded from PRISM data viewer for a single point
 #you will need to download a csv file of climate data from https://prism.oregonstate.edu/explorer/
-setwd("C:/Users/rmaxwell2/Desktop/work_r")
+setwd("C:/Users/rmaxwell2/Desktop/work_r") #set your working directory
 #install.packages(tidyverse)
 library(tidyverse)
 data <- read.table(file = "wolf_tmean_prism_original.csv", skip = 10, header = TRUE, sep = ",") #skips reading the header
