@@ -13,9 +13,9 @@ month <- substr(data[,1], 6, 7) #pull month from date string using character pos
 data <- add_column(data, year = year, .after = 1) #add in year column
 data <- add_column(data, month = month, .after = 2) #add in month column
 data <- data[,2:4] #3 column data frame
-colnames(data) <- c("year","month", "climate")
-data <- as.data.frame(data)
-data$month <- as.factor(data$month)
-data$year <- as.numeric(data$year)
-x <- pivot_wider(data, names_from = month, values_from = climate)
+colnames(data) <- c("year","month", "climate") #rename columns
+data <- as.data.frame(data) #make it a data frame
+data$month <- as.factor(data$month) #set variable type
+data$year <- as.numeric(data$year) #set variable type
+x <- pivot_wider(data, names_from = month, values_from = climate) #transform data format
 write.csv(x,file = "tmean_wolf_12.csv") #write to a file for later
