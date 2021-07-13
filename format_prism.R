@@ -19,3 +19,4 @@ data$month <- as.factor(data$month) #set variable type
 data$year <- as.numeric(data$year) #set variable type
 x <- pivot_wider(data, names_from = month, values_from = climate) #transform data format
 write.csv(x,file = "tmean_wolf_12.csv") #write to a file for later
+#the end
