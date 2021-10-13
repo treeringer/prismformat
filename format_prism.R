@@ -3,6 +3,20 @@
 #try with PRISM stacked or long format downloaded from PRISM data viewer for a single point
 #you will need to download a csv file of climate data from https://prism.oregonstate.edu/explorer/
 
+#Option 1 - hat tip to Nicole Zampieri 
+setwd("C:/Users/rmaxwell2/Desktop/work_r") #set your working directory
+install.packages("dplyr")
+library(dplyr)
+clim <- read.table(file = "wolf_tmean_prism_original.csv", skip = 10, header = TRUE, sep = ",") #skips reading the header
+head(clim)
+x <- clim %>%
+    mutate(year = substr(clim[,1], 1, 4),
+          month = substr(clim[,1], 6, 7)) %>%
+    select(2:4) %>%
+    pivot_wider(names_from = month, values_from = "ppt..mm.")
+write.csv(x,file = "tmean_wolf_12.csv") #write to a file for later
+
+#Option 2 - funky but functional
 setwd("C:/Users/rmaxwell2/Desktop/work_r") #set your working directory
 install.packages("tidyverse")
 library(tidyverse)
@@ -18,5 +32,5 @@ data <- as.data.frame(data) #make it a data frame
 data$month <- as.factor(data$month) #set variable type
 data$year <- as.numeric(data$year) #set variable type
 x <- pivot_wider(data, names_from = month, values_from = climate) #transform data format
-write.csv(x,file = "tmean_wolf_12.csv") #write to a file for later
+
 #the end
